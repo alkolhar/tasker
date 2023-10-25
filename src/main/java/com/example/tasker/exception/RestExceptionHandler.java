@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -20,6 +21,11 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     protected ResponseEntity<Object> handleEntityNotFound(EntityNotFoundException ex) {
         return buildResponseEntity(new ApiError(HttpStatus.NOT_FOUND, ex));
+    }
+
+    @ExceptionHandler(InvalidDataAccessApiUsageException.class)
+    protected ResponseEntity<Object> handleInvalidApiUsage(InvalidDataAccessApiUsageException ex) {
+        return buildResponseEntity(new ApiError(HttpStatus.BAD_REQUEST, ex));
     }
 
     /**
