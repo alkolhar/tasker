@@ -10,8 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Transactional
 @RestController
 @RequestMapping("api/accounts")
@@ -38,12 +36,8 @@ public class AccountController {
     public ResponseEntity<CollectionModel<EntityModel<Account>>> searchForAccount(@RequestParam(defaultValue = "") String searchText,
                                                                                   @RequestParam(defaultValue = "0") int page,
                                                                                   @RequestParam(defaultValue = "10") int size) {
-        List<EntityModel<Account>> accounts = accountService.findAccountBySearchText(searchText, page, size)
-                .stream()
-                .map(modelAssembler::toModel)
-                .toList();
-
-        return ResponseEntity.ok(CollectionModel.of(accounts));
+        var accounts = accountService.findAccountBySearchText(searchText, page, size);
+        return ResponseEntity.ok(pagedResourcesAssembler.toModel(accounts, modelAssembler));
     }
 
     @GetMapping("{id}")

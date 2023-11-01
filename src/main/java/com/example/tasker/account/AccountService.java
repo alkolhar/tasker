@@ -4,7 +4,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,7 +26,7 @@ public class AccountService {
         return accountRepository.save(account);
     }
 
-    public List<Account> findAccountBySearchText(String searchText, int page, int size) {
+    public Page<Account> findAccountBySearchText(String searchText, int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size);
         return accountRepository.searchForAccount(searchText, searchText, searchText, searchText, pageRequest);
     }

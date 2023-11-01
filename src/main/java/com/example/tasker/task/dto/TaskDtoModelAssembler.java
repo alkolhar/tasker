@@ -2,7 +2,6 @@ package com.example.tasker.task.dto;
 
 import com.example.tasker.task.Task;
 import com.example.tasker.task.TaskController;
-import com.example.tasker.task.TaskMapper;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.RepresentationModelAssembler;

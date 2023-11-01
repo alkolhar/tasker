@@ -1,7 +1,9 @@
 package com.example.tasker.account;
 
 import com.example.tasker.domain.BaseAbstractEntity;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import org.hibernate.envers.Audited;

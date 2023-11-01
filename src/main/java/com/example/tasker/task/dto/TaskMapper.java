@@ -1,6 +1,6 @@
-package com.example.tasker.task;
+package com.example.tasker.task.dto;
 
-import com.example.tasker.task.dto.TaskDto;
+import com.example.tasker.task.Task;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
