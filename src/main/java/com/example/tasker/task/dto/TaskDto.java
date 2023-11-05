@@ -4,6 +4,9 @@ import com.example.tasker.task.Task;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
@@ -12,6 +15,9 @@ import java.util.Objects;
 /**
  * DTO for {@link Task}
  */
+@Getter
+@Setter
+@RequiredArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TaskDto extends RepresentationModel<TaskDto> implements Serializable {
     @NotNull
@@ -21,50 +27,12 @@ public class TaskDto extends RepresentationModel<TaskDto> implements Serializabl
     @NotBlank
     private String subject;
 
-    public TaskDto() {
-    }
 
     public TaskDto(Long id, Long accountId, String description, String subject) {
         this.id = id;
         this.accountId = accountId;
         this.description = description;
         this.subject = subject;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public TaskDto setId(Long id) {
-        this.id = id;
-        return this;
-    }
-
-    public Long getAccountId() {
-        return accountId;
-    }
-
-    public TaskDto setAccountId(Long accountId) {
-        this.accountId = accountId;
-        return this;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public TaskDto setDescription(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public TaskDto setSubject(String subject) {
-        this.subject = subject;
-        return this;
     }
 
     @Override

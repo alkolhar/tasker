@@ -2,6 +2,7 @@ package com.example.tasker.exception;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
 import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+@Getter
 public class ApiError {
     private HttpStatus httpStatus;
     private LocalDateTime timestamp;
@@ -41,40 +43,20 @@ public class ApiError {
         this.message = message;
     }
 
-    public HttpStatus getHttpStatus() {
-        return httpStatus;
-    }
-
     public void setHttpStatus(HttpStatus httpStatus) {
         this.httpStatus = httpStatus;
-    }
-
-    public LocalDateTime getTimestamp() {
-        return timestamp;
     }
 
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
     public void setMessage(String message) {
         this.message = message;
     }
 
-    public String getDebugMessage() {
-        return debugMessage;
-    }
-
     public void setDebugMessage(String debugMessage) {
         this.debugMessage = debugMessage;
-    }
-
-    public List<ApiSubError> getSubErrors() {
-        return subErrors;
     }
 
     public void setSubErrors(List<ApiSubError> subErrors) {

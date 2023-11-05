@@ -3,10 +3,14 @@ package com.example.tasker.task;
 import com.example.tasker.account.Account;
 import com.example.tasker.domain.BaseAbstractEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "task")
 public class Task extends BaseAbstractEntity {
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
@@ -21,27 +25,4 @@ public class Task extends BaseAbstractEntity {
     @JdbcTypeCode(SqlTypes.NVARCHAR)
     private String subject;
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
 }

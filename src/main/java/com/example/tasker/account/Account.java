@@ -6,6 +6,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.hibernate.envers.Audited;
 import org.hibernate.proxy.HibernateProxy;
 
@@ -13,6 +16,9 @@ import java.util.Objects;
 
 @Entity
 @Audited
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Table(name = "accounts")
 public class Account extends BaseAbstractEntity {
     private String name;
@@ -20,46 +26,10 @@ public class Account extends BaseAbstractEntity {
     @NotEmpty(message = "Login can't be empty!")
     @Column(unique = true, updatable = false)
     private String login;
-
     @Email(message = "Email is not valid", regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")
     @Column(unique = true)
     private String email;
 
-    public Account() {
-        // JPA constructor
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     @SuppressWarnings("java:S2097")
     @Override
